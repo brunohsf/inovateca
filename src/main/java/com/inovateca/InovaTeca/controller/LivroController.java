@@ -27,7 +27,7 @@ public class LivroController {
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Retorna um livro atraves do ID", produces = "JSON", response = LivroModel.class)
-    private LivroModel findById(@ApiParam(name = "id", required = true, type = "Long") @PathVariable long id) {
+    public LivroModel findById(@ApiParam(name = "id", required = true, type = "Long") @PathVariable long id) {
         var model = service.findById(id);
         if (model.isPresent()) {
             buildEntityLinks(model.get());
@@ -67,10 +67,17 @@ public class LivroController {
     }
 
     public void buildEntityLinks(LivroModel model) {
-        //..link to self
-        model.add(WebMvcLinkBuilder.linkTo( //..link to a method...
-                WebMvcLinkBuilder.methodOn(this.getClass()).findById(model.getId())).withSelfRel());
-        Link link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(AutorModel.class).findById(model.getAutor().getId())).withSelfRel();
+
+        model.add(
+                WebMvcLinkBuilder.linkTo(
+                        WebMvcLinkBuilder.methodOn(this.getClass())
+                                .findById(model.getId())
+                ).withSelfRel()
+        );
+        Link link = WebMvcLinkBuilder.linkTo(
+                WebMvcLinkBuilder.methodOn(AutorController.class)
+                        .findById(model.getAutor().getId())
+        ).withSelfRel();
         model.getAutor().add(link);
     }
 
