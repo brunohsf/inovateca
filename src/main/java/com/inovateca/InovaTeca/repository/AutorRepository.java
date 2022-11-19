@@ -5,10 +5,12 @@ import com.inovateca.InovaTeca.model.LivroModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface AutorRepository extends JpaRepository<AutorModel, Long> {
 
     public Optional<AutorModel> findById(Long id);
