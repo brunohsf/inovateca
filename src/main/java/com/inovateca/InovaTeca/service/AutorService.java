@@ -17,15 +17,12 @@ public class AutorService {
     public Optional<AutorModel> findById(long id) {
         return repository.findById(id);
     }
-
     public Page<AutorModel> findAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
-
     public AutorModel save(AutorModel model) {
         return repository.save(model);
     }
-
     public AutorModel update(AutorModel model) {
         Optional<AutorModel> a = repository.findById(model.getId());
         if (!a.isPresent()) {
@@ -34,12 +31,10 @@ public class AutorService {
         a.get().setNome(model.getNome());
         return repository.save(a.get());
     }
-
     public void delete(long id) {
         Optional<AutorModel> a = repository.findById(id);
         if (a.isPresent()) {
             repository.delete(a.get());
         }
     }
-
 }

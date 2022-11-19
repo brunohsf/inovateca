@@ -18,15 +18,12 @@ public class LivroService {
     public Optional<LivroModel> findById(long id) {
         return repository.findById(id);
     }
-
     public Page<LivroModel> findAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
-
     public LivroModel save(LivroModel model) {
         return repository.save(model);
     }
-
     public LivroModel update(LivroModel model) {
         Optional<LivroModel> l = repository.findById(model.getId());
         if (!l.isPresent()) {
@@ -37,13 +34,10 @@ public class LivroService {
 
         return repository.save(l.get());
     }
-
     public void delete(long id) {
         Optional<LivroModel> l = repository.findById(id);
         if (l.isPresent()) {
             repository.delete(l.get());
         }
     }
-
-
 }
