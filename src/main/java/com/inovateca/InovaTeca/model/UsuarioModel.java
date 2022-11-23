@@ -22,7 +22,7 @@ public class UsuarioModel {
     private String nomeUsuario;
 
     @Column(name = "email_usuario", nullable = false, length = 300, unique = true)
-    private String emailUsuario;
+    private String email;
 
     @Column(name = "senha_usuario", nullable = false, length = 300)
     private String senhaUsuario;
