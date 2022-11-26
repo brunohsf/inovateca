@@ -54,6 +54,10 @@ public class AutorController {
         //return the ResponseEntity
         return new ResponseEntity(assembler.toModel(pageModel), HttpStatus.OK);
     }
+    @PostMapping
+    public AutorModel save(@RequestBody AutorModel model) {
+        return service.save(model);
+    }
 
     @PutMapping
     public AutorModel update(@RequestBody AutorModel model) {

@@ -42,7 +42,7 @@ public class LivroController {
         var sortDirection = "desc".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
 
         //..a PageAble object is an object containing the list of resources
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "fullName"));
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "titulo"));
 
         //..a Page containing the resource models
         Page<LivroModel> pageModel = service.findAll(pageable);
@@ -53,6 +53,11 @@ public class LivroController {
         }
         //return the ResponseEntity
         return new ResponseEntity(assembler.toModel(pageModel), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public LivroModel save(@RequestBody LivroModel model) {
+        return service.save(model);
     }
 
     @PutMapping
