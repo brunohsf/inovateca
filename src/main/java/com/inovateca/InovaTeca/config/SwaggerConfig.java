@@ -20,6 +20,7 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
+@SuppressWarnings("deprecation")
 public class SwaggerConfig extends WebMvcConfigurerAdapter {
 
     @Bean
@@ -35,11 +36,11 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
                 .apiInfo(apiEndPointsInfo());
     }
     private ApiInfo apiEndPointsInfo() {
-        return new ApiInfoBuilder().title("Contact Book API ")
-                .description("Contact Book API for Fatec Jales")
-                .contact(new Contact("Fatec Jales",
-                        "www.fatecjales.edu.com",
-                        "coordenacao@fatecjales.edu.br"))
+        return new ApiInfoBuilder().title("Inovateca API ")
+                .description("Uma API para gerenciamento de livros")
+                .contact(new Contact("Bruno Henrique",
+                        "",
+                        "brunohsfrancisco@gmail.com"))
                 .version("1.0.0")
                 .build();
     }

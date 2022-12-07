@@ -42,7 +42,7 @@ public class AutorController {
         var sortDirection = "desc".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
 
         //..a PageAble object is an object containing the list of resources
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "fullName"));
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "nome"));
 
         //..a Page containing the resource models
         Page<AutorModel> pageModel = service.findAll(pageable);
